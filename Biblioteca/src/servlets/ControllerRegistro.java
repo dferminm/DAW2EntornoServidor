@@ -22,7 +22,6 @@ public class ControllerRegistro extends HttpServlet {
 	 */
 	public ControllerRegistro() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -54,7 +53,6 @@ public class ControllerRegistro extends HttpServlet {
 				e.printStackTrace();
 				procesarErrorSQL(request, response, e);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 				procesarError(request, response, e);
 			}
@@ -68,7 +66,6 @@ public class ControllerRegistro extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

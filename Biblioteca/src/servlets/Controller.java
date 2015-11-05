@@ -172,7 +172,6 @@ public class Controller extends HttpServlet {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			break;
@@ -193,7 +192,6 @@ public class Controller extends HttpServlet {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			break;
@@ -356,10 +354,8 @@ public class Controller extends HttpServlet {
 				mensajeError = "El socio tiene un ejemplar en prestamo";
 			}
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		} catch (Exception e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		request.setAttribute("error", mensajeError);
