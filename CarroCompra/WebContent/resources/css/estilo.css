@@ -1,0 +1,55 @@
+body {
+	background-color: #9cebef;
+}
+#container {
+	background-color: #92d19d;
+	width: 100%;
+	margin-right: auto;
+	margin-left: auto;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 24px;
+}
+#header {
+	background-image: url(../img/logo.jpg);
+	height: 210px;
+	width: 100%;
+}
+#menu{
+	font-size: 20px;
+	width: 800px;
+	height: 50px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 8px;
+	margin-bottom: 10px;
+}
+
+#tabla {
+	font-size: 20px;
+	width: 100%;
+	margin-right: auto;
+	margin-left: auto;
+	margin-bottom: 10px;
+}
+
+table{
+	margin-top: 10px;
+	border-collapse: collapse;
+}
+#tabla th {
+	color: #FFFFFF;
+	background-color: #87783A;
+	text-align: center;
+}
+#tabla tr {
+	text-align:center;
+	background-color: #CFC99C;
+}
+#tabla caption {
+	color: #FFFFFF;
+	border: 6px outset #483211;
+	background-color: #483211;
+	font-size:36px;
+	margin-top:5px;
+}
+
