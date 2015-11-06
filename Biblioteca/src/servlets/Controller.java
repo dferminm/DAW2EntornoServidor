@@ -342,17 +342,20 @@ public class Controller extends HttpServlet {
 	protected void procesarErrorSQL(HttpServletRequest request, HttpServletResponse response, SQLException e)
 			throws ServletException, IOException {
 		String mensajeError = e.getMessage();
+		int p1 = mensajeError.indexOf("(")+1;
+		int p2 = mensajeError.lastIndexOf(")");
+		String mensajeFinal = mensajeError.substring(p1, p2);
 		DaoMensajeError error = new DaoMensajeError();
 		try {
-			mensajeError = error.error(mensajeError);
-			System.out.println(mensajeError);
 			int codigoError = e.getErrorCode();
 			switch (codigoError) {
 			case 20001:
 				mensajeError = "El socio está penalizado";
 			case 20000:
 				mensajeError = "El socio tiene un ejemplar en prestamo";
+				
 			}
+			mensajeError = error.error(mensajeFinal);
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		} catch (Exception e1) {

@@ -71,15 +71,59 @@ public class Controller extends HttpServlet {
 					session.setAttribute("carro", micarro);
 				}
 				String idProducto = request.getParameter("idProducto");
-				Producto producto = null;
-				producto = daoProducto.buscarProducto(idProducto);
-				micarro.addElemento(producto);
-				System.out.println(micarro.toString());
+				Producto p = daoProducto.buscarProducto(Integer.parseInt(idProducto));
+				micarro.addElemento(p);
 				session.setAttribute("carro", micarro);
 				request.getRequestDispatcher("./compra.jsp").forward(request, response);
-			} catch (SQLException e) {
-				e.printStackTrace();
 			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			break;
+			
+			/*
+			 * --INCREMENTAR PRODUCTO DEL CARRITO--*/
+			
+		case "incrementar":
+			try{
+				micarro = (CarroCompra) session.getAttribute("carro");
+				String idProducto = request.getParameter("idProducto");
+				Producto p = daoProducto.buscarProducto(Integer.parseInt(idProducto));
+				micarro.addElemento(p);
+				session.setAttribute("carro", micarro);
+				request.getRequestDispatcher("./compra.jsp").forward(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			break;
+			
+			/*
+			 * --DISMINUIR PRODUCTO DEL CARRITO--*/
+			
+		case "disminuir":
+			try{
+				micarro = (CarroCompra) session.getAttribute("carro");
+				String idProducto = request.getParameter("idProducto");
+				Producto p = daoProducto.buscarProducto(Integer.parseInt(idProducto));
+				micarro.disminuirElemento(p);
+				session.setAttribute("carro", micarro);
+				request.getRequestDispatcher("./compra.jsp").forward(request, response);
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+			break;
+			
+			/*
+			 * --ELIMINAR PRODUCTO DEL CARRITO--*/
+			
+		case "eliminar":
+			try{
+				micarro = (CarroCompra) session.getAttribute("carro");
+				String idProducto = request.getParameter("idProducto");
+				Producto p = daoProducto.buscarProducto(Integer.parseInt(idProducto));
+				micarro.eliminarElemento(p);
+				session.setAttribute("carro", micarro);
+				request.getRequestDispatcher("./compra.jsp").forward(request, response);
+			}catch (Exception e) {
 				e.printStackTrace();
 			}
 			break;

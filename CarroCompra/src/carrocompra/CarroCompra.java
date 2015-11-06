@@ -29,9 +29,25 @@ public class CarroCompra {
 		actual.setCantidad(actual.getCantidad()+1);
 		}
 		}
-
-	@Override
-	public String toString() {
-		return "CarroCompra [elementos=" + elementos + "]";
+	
+	public void disminuirElemento(Producto p){
+		int posicion = elementos.indexOf(p);
+		Producto actual = elementos.get(posicion);
+		actual.setCantidad(actual.getCantidad()-1);
+		if(actual.getCantidad() == 0){
+			elementos.remove(posicion);
+		}
 	}
-}
+	
+	public void eliminarElemento(Producto p){
+		elementos.remove(p);
+		}
+	
+	public long precioTotal(){
+		long total = 0;
+		for(Producto p : elementos){
+			total = total + (p.getPrecioNormal()*p.getCantidad());
+		}
+		return total;
+	}
+	}

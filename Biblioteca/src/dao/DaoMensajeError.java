@@ -12,8 +12,7 @@ public class DaoMensajeError {
 	public DaoMensajeError() {
 	}
 	
-	public String error(String restriccion) throws SQLException, Exception {
-		restriccion ="%"+ restriccion.substring(30,45)+"%";
+	public String error(String mensajeError) throws SQLException, Exception {
 		String error = null;
 		Connection con = null;
 		ResultSet rs = null;
@@ -25,7 +24,7 @@ public class DaoMensajeError {
 							 "FROM MENSAJE_ERROR " + 
 							 "WHERE RESTRICCION LIKE ?";
 			st = con.prepareStatement(ordenSQL);
-			st.setString(1, restriccion);
+			st.setString(1, mensajeError);
 			rs = st.executeQuery();
 			while(rs.next()){
 			error = rs.getString("MENSAJE");

@@ -49,39 +49,35 @@ public class DaoProducto {
 		return listaProductos;
 	}
 	
-	public Producto buscarProducto(String idProducto) throws SQLException, Exception {
-		Producto productoFinal = null;
+	public Producto buscarProducto(int idProducto) throws SQLException, Exception {
 		Connection con = null;
 		PreparedStatement st = null;
-		ResultSet rs = null;
+		String ordenSQL = "SELECT * FROM PRODUCTO WHERE ID = ?";
 		try {
 			Conexion miconex = new Conexion();
 			con = miconex.getConexion();
-			con.setAutoCommit(false);
-			String ordenSQL = "SELECT * FROM PRODUCTO WHERE ID = ?";
 			st = con.prepareStatement(ordenSQL);
-			st.setString(1, idProducto);
-			rs = st.executeQuery();
-			while (rs.next()) {
+			st.setInt(1, idProducto);
+			ResultSet rs = st.executeQuery();
+			rs.next();
 				Producto miProducto = new Producto();
 				miProducto.setId(rs.getInt("ID"));
 				miProducto.setNombre(rs.getString("NOMBRE"));
 				miProducto.setPrecioNormal(rs.getLong("PRECIO_NORMAL"));
-				miProducto = productoFinal;
-			}
+				miProducto.setCantidad(1);
+				return miProducto;
+				
 		} catch (SQLException se) {
 			throw se;
 		} catch (Exception e) {
 			throw e;
 		} finally {
-			if (rs != null)
-				rs.close();
 			if (st != null)
 				st.close();
 			if (con != null)
 				con.close();
 		}
-		return productoFinal;
+		
 	}
 
 }
