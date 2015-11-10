@@ -2,7 +2,6 @@ package entidades;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.List;
 
 
 /**
@@ -18,10 +17,6 @@ public class Libro implements Serializable {
 	private String isbn;
 
 	private String titulo;
-
-	//bi-directional many-to-one association to Ejemplar
-	@OneToMany(mappedBy="libro")
-	private List<Ejemplar> ejemplares;
 
 	//bi-directional many-to-one association to Autor
 	@ManyToOne
@@ -45,28 +40,6 @@ public class Libro implements Serializable {
 
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
-	}
-
-	public List<Ejemplar> getEjemplares() {
-		return this.ejemplares;
-	}
-
-	public void setEjemplares(List<Ejemplar> ejemplares) {
-		this.ejemplares = ejemplares;
-	}
-
-	public Ejemplar addEjemplare(Ejemplar ejemplare) {
-		getEjemplares().add(ejemplare);
-		ejemplare.setLibro(this);
-
-		return ejemplare;
-	}
-
-	public Ejemplar removeEjemplare(Ejemplar ejemplare) {
-		getEjemplares().remove(ejemplare);
-		ejemplare.setLibro(null);
-
-		return ejemplare;
 	}
 
 	public Autor getAutor() {

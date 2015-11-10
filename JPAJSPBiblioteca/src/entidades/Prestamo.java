@@ -16,6 +16,7 @@ public class Prestamo implements Serializable {
 
 	@Id
 	private long idejemplar;
+	private long idsocio;
 
 	@Temporal(TemporalType.DATE)
 	private Date fechalimitedevolucion;
@@ -25,12 +26,12 @@ public class Prestamo implements Serializable {
 
 	//uni-directional one-to-one association to Ejemplar
 	@OneToOne
-	@JoinColumn(name="IDEJEMPLAR")
+	@JoinColumn(name="IDEJEMPLAR", insertable=false, updatable=false)
 	private Ejemplar ejemplar;
 
 	//bi-directional many-to-one association to Socio
 	@ManyToOne
-	@JoinColumn(name="IDSOCIO")
+	@JoinColumn(name="IDSOCIO", insertable=false, updatable=false)
 	private Socio socio;
 
 	public Prestamo() {
@@ -74,6 +75,14 @@ public class Prestamo implements Serializable {
 
 	public void setSocio(Socio socio) {
 		this.socio = socio;
+	}
+
+	public long getIdsocio() {
+		return idsocio;
+	}
+
+	public void setIdsocio(long idsocio) {
+		this.idsocio = idsocio;
 	}
 
 }

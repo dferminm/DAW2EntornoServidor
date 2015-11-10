@@ -18,8 +18,8 @@ public class Ejemplar implements Serializable {
 
 	private String baja;
 
-	//bi-directional many-to-one association to Libro
-	@ManyToOne
+	//uni-directional many-to-one association to Libro
+	@ManyToOne(cascade={CascadeType.REMOVE})
 	@JoinColumn(name="ISBN")
 	private Libro libro;
 
