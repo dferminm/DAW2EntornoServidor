@@ -88,7 +88,8 @@
 			</tr>
 		</table>
 		<h2 align="center">
-			<a href="/CarroCompra/formalizarPedido.jsp">FORMALIZAR PEDIDO</a>
+			<a href="/CarroCompra/controller?operacion=formulario">FORMALIZAR
+				PEDIDO</a>
 		</h2>
 	</c:if>
 </body>
